@@ -1,0 +1,1 @@
+Folder Purpose: handbooks and hardcoded logic

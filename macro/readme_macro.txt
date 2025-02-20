@@ -1,0 +1,1 @@
+Folder Purpose: functions and procedures which dont create tables. They are used for the replacement of some repetitive code chunks.

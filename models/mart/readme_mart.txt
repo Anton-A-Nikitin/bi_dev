@@ -1,0 +1,1 @@
+Folder Purpose: In this folder tables which are used directly as the sources in PowerBi or to be delivered to the user as tables.
