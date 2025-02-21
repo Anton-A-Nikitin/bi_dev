@@ -1,1 +1,0 @@
-Fodler Purpose: transformations and business logic

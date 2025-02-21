@@ -1,1 +1,0 @@
-Folder Purpose: models which will be sources for marts, other analysis. Often the last step of transformations.
