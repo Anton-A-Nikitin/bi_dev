@@ -1,63 +1,53 @@
 When designing a Data Warehouse (DWH) for Business Intelligence (BI), data is typically structured in multiple layers to ensure better organization, data quality, and performance. Here’s the breakdown of each layer:
 
-### 1. **Base Layer (Raw Layer / Staging Layer)**  
-   - **Purpose**: Stores raw data as it is extracted from source systems (e.g., ERP, CRM, POS).  
-   - **Characteristics**:  
-     - No transformations applied.  
-     - Only used for temporary storage.  
-     - Data may be stored in flat files, external tables, or raw relational tables.  
+1. **Base Layer (Raw Layer / Staging Layer)**
+   - **Purpose**: Stores raw data as it is extracted from source systems (e.g., ERP, CRM, POS).
+   - **Characteristics**:
+     - No transformations applied.
+     - Only used for temporary storage.
+     - Data may be stored in flat files, external tables, or raw relational tables.
    - **Example**: A table holding all transactions from the retail POS system without any filtering or cleaning.
 
----
-
-### 2. **Cleansing Layer (Data Quality Layer)**  
-   - **Purpose**: Standardizes and cleanses data for consistency and correctness.  
-   - **Characteristics**:  
-     - Handles deduplication, missing values, standardizing formats (e.g., date formats, currency conversions).  
-     - Applies business rules for validation (e.g., customer age should be >18).  
-     - Ensures referential integrity (e.g., foreign keys match valid primary keys).  
+2. **Cleansing Layer (Data Quality Layer)**
+   - **Purpose**: Standardizes and cleanses data for consistency and correctness.
+   - **Characteristics**:
+     - Handles deduplication, missing values, standardizing formats (e.g., date formats, currency conversions).
+     - Applies business rules for validation (e.g., customer age should be >18).
+     - Ensures referential integrity (e.g., foreign keys match valid primary keys).
    - **Example**: Removing duplicate customer records and standardizing product names.
 
----
-
-### 3. **Business Layer (Transform Layer / Operational Data Store - ODS)**  
-   - **Purpose**: Applies business logic and transformations to prepare data for analysis.  
-   - **Characteristics**:  
-     - Joins data from multiple sources.  
-     - Applies calculations like profit margins, revenue growth, customer segmentation.  
-     - Prepares data for reporting but is not yet optimized for performance.  
+3. **Business Layer (Transform Layer / Operational Data Store - ODS)**
+   - **Purpose**: Applies business logic and transformations to prepare data for analysis.
+   - **Characteristics**:
+     - Joins data from multiple sources.
+     - Applies calculations like profit margins, revenue growth, customer segmentation.
+     - Prepares data for reporting but is not yet optimized for performance.
    - **Example**: Creating a "Sales Fact" table that calculates net sales after discounts.
 
----
-
-### 4. **Intermediate Layer (Aggregated Layer / Performance Optimization Layer)**  
-   - **Purpose**: Optimizes data for faster query performance.  
-   - **Characteristics**:  
-     - Stores pre-aggregated or summarized data to improve BI tool performance.  
-     - Creates indexed and partitioned tables for faster lookups.  
-     - Denormalized for quick access in dashboards.  
+4. **Intermediate Layer (Aggregated Layer / Performance Optimization Layer)**
+   - **Purpose**: Optimizes data for faster query performance.
+   - **Characteristics**:
+     - Stores pre-aggregated or summarized data to improve BI tool performance.
+     - Creates indexed and partitioned tables for faster lookups.
+     - Denormalized for quick access in dashboards.
    - **Example**: Instead of storing daily sales transactions, an aggregated table with total sales per store per month.
 
----
-
-### 5. **Mart Layer (BI Layer / Presentation Layer)**  
-   - **Purpose**: Provides data in a user-friendly format for reporting and visualization.  
-   - **Characteristics**:  
-     - Organized in **star schema** or **snowflake schema** for BI tools like Power BI.  
-     - Designed for specific business use cases (e.g., a "Sales Mart" for sales dashboards, "Customer Mart" for CRM analysis).  
-     - Filters and organizes data in a way that makes sense for end users.  
+5. **Mart Layer (BI Layer / Presentation Layer)**
+   - **Purpose**: Provides data in a user-friendly format for reporting and visualization.
+   - **Characteristics**:
+     - Organized in **star schema** or **snowflake schema** for BI tools like Power BI.
+     - Designed for specific business use cases (e.g., a "Sales Mart" for sales dashboards, "Customer Mart" for CRM analysis).
+     - Filters and organizes data in a way that makes sense for end users.
    - **Example**: A Power BI dataset that provides ready-to-use sales KPIs for executives.
 
----
-
-### **Summary of Differences**
-| Layer | Purpose | Key Features |
-|--------|------------|--------------|
-| **Base (Raw)** | Stores raw data | No transformations, exact copy of source data |
-| **Cleansing** | Standardizes & cleans data | Deduplication, missing values handling |
-| **Business** | Applies business rules | Joins, calculations, logic-based transformations |
-| **Intermediate** | Optimizes performance | Pre-aggregations, indexing, partitioning |
-| **Mart** | Presentation & reporting | BI-friendly schema, filtered for analysis |
+Summary of Differences:
+-------------------------------------------------
+| Layer           | Purpose                 | Key Features                                     |
+|----------------|-------------------------|--------------------------------------------------|
+| Base (Raw)      | Stores raw data         | No transformations, exact copy of source data   |
+| Cleansing       | Standardizes & cleans   | Deduplication, missing values handling          |
+| Business        | Applies business rules  | Joins, calculations, logic-based transformations|
+| Intermediate    | Optimizes performance   | Pre-aggregations, indexing, partitioning        |
+| Mart           | Presentation & reporting| BI-friendly schema, filtered for analysis       |
 
 Each layer ensures that data is reliable, performant, and usable for business intelligence needs.
-
